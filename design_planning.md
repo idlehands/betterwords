@@ -1,7 +1,7 @@
 worst_words
 |column| type| example or note|
 |--|--|--|
-|id | uuid | n/a|
+|wid | uuid | n/a|
 |label | text | ex: "you guys"|
 |user_id| uuid| the id of the creator|
 |reason| text| n/a|
@@ -11,7 +11,7 @@ better_words
 
 |column| type| example|
 |--|--|--|
-|id|uuid| n/a|
+|bid|uuid| n/a|
 label | text | ex: "you guys"|
 |user_id| uuid| the id of the creator|
 |reason| text| n/a|
@@ -29,5 +29,5 @@ votes
 users
 |column| type| example|
 |--|--|--|
-|id|uuid| n/a|
+|uid|uuid| n/a|
 |name| text| ex: Takudzwa|
