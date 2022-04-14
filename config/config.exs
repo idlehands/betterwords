@@ -8,7 +8,12 @@
 import Config
 
 config :better_words,
-  ecto_repos: [BetterWords.Repo]
+  ecto_repos: [BetterWords.Repo],
+  generators: [binary_id: true]
+
+config :better_words, BetterWords.Repo,
+  migration_primary_key: [type: :binary_id, autogenerate: true],
+  migration_timestamps: [type: :utc_datetime_usec]
 
 # Configures the endpoint
 config :better_words, BetterWordsWeb.Endpoint,

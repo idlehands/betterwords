@@ -18,6 +18,13 @@ defmodule BetterWordsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/worst_words", WorstWordLive.Index, :index
+    live "/worst_words/new", WorstWordLive.Index, :new
+    live "/worst_words/:id/edit", WorstWordLive.Index, :edit
+
+    live "/worst_words/:id", WorstWordLive.Show, :show
+    live "/worst_words/:id/show/edit", WorstWordLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
