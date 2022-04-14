@@ -1,0 +1,36 @@
+<h1>Show Worst word</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.worst_word_show_path(@socket, :show, @worst_word)}>
+    <.live_component
+      module={BetterWordsWeb.WorstWordLive.FormComponent}
+      id={@worst_word.id}
+      title={@page_title}
+      action={@live_action}
+      worst_word={@worst_word}
+      return_to={Routes.worst_word_show_path(@socket, :show, @worst_word)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Label:</strong>
+    <%= @worst_word.label %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @worst_word.user_id %>
+  </li>
+
+  <li>
+    <strong>Reason:</strong>
+    <%= @worst_word.reason %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.worst_word_show_path(@socket, :edit, @worst_word), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.worst_word_index_path(@socket, :index) %></span>

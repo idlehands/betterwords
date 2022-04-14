@@ -1,0 +1,43 @@
+<h1>Listing Worst words</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.worst_word_index_path(@socket, :index)}>
+    <.live_component
+      module={BetterWordsWeb.WorstWordLive.FormComponent}
+      id={@worst_word.id || :new}
+      title={@page_title}
+      action={@live_action}
+      worst_word={@worst_word}
+      return_to={Routes.worst_word_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>User</th>
+      <th>Reason</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="worst_words">
+    <%= for worst_word <- @worst_words do %>
+      <tr id={"worst_word-#{worst_word.id}"}>
+        <td><%= worst_word.label %></td>
+        <td><%= worst_word.user_id %></td>
+        <td><%= worst_word.reason %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.worst_word_show_path(@socket, :show, worst_word) %></span>
+          <span><%= live_patch "Edit", to: Routes.worst_word_index_path(@socket, :edit, worst_word) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: worst_word.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Worst word", to: Routes.worst_word_index_path(@socket, :new) %></span>
