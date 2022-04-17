@@ -26,7 +26,7 @@ defmodule BetterWords.WordsTest do
       assert {:ok, %WorstWord{} = worst_word} = Words.create_worst_word(valid_attrs)
       assert worst_word.label == "some label"
       assert worst_word.reason == "some reason"
-      assert worst_word.user_id == "7488a646-e31f-11e4-aace-600308960662"
+
     end
 
     test "create_worst_word/1 with invalid data returns error changeset" do
@@ -40,7 +40,7 @@ defmodule BetterWords.WordsTest do
       assert {:ok, %WorstWord{} = worst_word} = Words.update_worst_word(worst_word, update_attrs)
       assert worst_word.label == "some updated label"
       assert worst_word.reason == "some updated reason"
-      assert worst_word.user_id == "7488a646-e31f-11e4-aace-600308960668"
+
     end
 
     test "update_worst_word/2 with invalid data returns error changeset" do
