@@ -12,7 +12,7 @@ defmodule BetterWords.Words.WorstWord do
   @doc false
   def changeset(worst_word, attrs) do
     worst_word
-    |> cast(attrs, [:label, :user_id, :reason])
-    |> validate_required([:label, :user_id, :reason])
+    |> cast(attrs, [:label, :reason])
+    |> validate_required([:label, :reason])
   end
 end

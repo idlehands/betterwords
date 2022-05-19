@@ -4,9 +4,9 @@ defmodule BetterWordsWeb.WorstWordLiveTest do
   import Phoenix.LiveViewTest
   import BetterWords.WordsFixtures
 
-  @create_attrs %{label: "some label", reason: "some reason", user_id: "7488a646-e31f-11e4-aace-600308960662"}
-  @update_attrs %{label: "some updated label", reason: "some updated reason", user_id: "7488a646-e31f-11e4-aace-600308960668"}
-  @invalid_attrs %{label: nil, reason: nil, user_id: nil}
+  @create_attrs %{label: "some label", reason: "some reason"}
+  @update_attrs %{label: "some updated label", reason: "some updated reason"}
+  @invalid_attrs %{label: nil, reason: nil}
 
   defp create_worst_word(_) do
     worst_word = worst_word_fixture()
