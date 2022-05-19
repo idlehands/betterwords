@@ -60,4 +60,64 @@ defmodule BetterWords.WordsTest do
       assert %Ecto.Changeset{} = Words.change_worst_word(worst_word)
     end
   end
+
+  describe "better_words" do
+    alias BetterWords.Words.BetterWord
+
+    import BetterWords.WordsFixtures
+
+    @invalid_attrs %{label: nil, reason: nil, user_id: nil, worst_word_id: nil}
+
+    test "list_better_words/0 returns all better_words" do
+      better_word = better_word_fixture()
+      assert Words.list_better_words() == [better_word]
+    end
+
+    test "get_better_word!/1 returns the better_word with given id" do
+      better_word = better_word_fixture()
+      assert Words.get_better_word!(better_word.id) == better_word
+    end
+
+    test "create_better_word/1 with valid data creates a better_word" do
+      valid_attrs = %{label: "some label", reason: "some reason", user_id: "7488a646-e31f-11e4-aace-600308960662", worst_word_id: "7488a646-e31f-11e4-aace-600308960662"}
+
+      assert {:ok, %BetterWord{} = better_word} = Words.create_better_word(valid_attrs)
+      assert better_word.label == "some label"
+      assert better_word.reason == "some reason"
+      assert better_word.user_id == "7488a646-e31f-11e4-aace-600308960662"
+      assert better_word.worst_word_id == "7488a646-e31f-11e4-aace-600308960662"
+    end
+
+    test "create_better_word/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Words.create_better_word(@invalid_attrs)
+    end
+
+    test "update_better_word/2 with valid data updates the better_word" do
+      better_word = better_word_fixture()
+      update_attrs = %{label: "some updated label", reason: "some updated reason", user_id: "7488a646-e31f-11e4-aace-600308960668", worst_word_id: "7488a646-e31f-11e4-aace-600308960668"}
+
+      assert {:ok, %BetterWord{} = better_word} = Words.update_better_word(better_word, update_attrs)
+      assert better_word.label == "some updated label"
+      assert better_word.reason == "some updated reason"
+      assert better_word.user_id == "7488a646-e31f-11e4-aace-600308960668"
+      assert better_word.worst_word_id == "7488a646-e31f-11e4-aace-600308960668"
+    end
+
+    test "update_better_word/2 with invalid data returns error changeset" do
+      better_word = better_word_fixture()
+      assert {:error, %Ecto.Changeset{}} = Words.update_better_word(better_word, @invalid_attrs)
+      assert better_word == Words.get_better_word!(better_word.id)
+    end
+
+    test "delete_better_word/1 deletes the better_word" do
+      better_word = better_word_fixture()
+      assert {:ok, %BetterWord{}} = Words.delete_better_word(better_word)
+      assert_raise Ecto.NoResultsError, fn -> Words.get_better_word!(better_word.id) end
+    end
+
+    test "change_better_word/1 returns a better_word changeset" do
+      better_word = better_word_fixture()
+      assert %Ecto.Changeset{} = Words.change_better_word(better_word)
+    end
+  end
 end

@@ -19,4 +19,21 @@ defmodule BetterWords.WordsFixtures do
 
     worst_word
   end
+
+  @doc """
+  Generate a better_word.
+  """
+  def better_word_fixture(attrs \\ %{}) do
+    {:ok, better_word} =
+      attrs
+      |> Enum.into(%{
+        label: "some label",
+        reason: "some reason",
+        user_id: "7488a646-e31f-11e4-aace-600308960662",
+        worst_word_id: "7488a646-e31f-11e4-aace-600308960662"
+      })
+      |> BetterWords.Words.create_better_word()
+
+    better_word
+  end
 end

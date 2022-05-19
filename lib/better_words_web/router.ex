@@ -25,6 +25,13 @@ defmodule BetterWordsWeb.Router do
 
     live "/worst_words/:id", WorstWordLive.Show, :show
     live "/worst_words/:id/show/edit", WorstWordLive.Show, :edit
+
+    live "/better_words", BetterWordLive.Index, :index
+    live "/better_words/new", BetterWordLive.Index, :new
+    live "/better_words/:id/edit", BetterWordLive.Index, :edit
+
+    live "/better_words/:id", BetterWordLive.Show, :show
+    live "/better_words/:id/show/edit", BetterWordLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

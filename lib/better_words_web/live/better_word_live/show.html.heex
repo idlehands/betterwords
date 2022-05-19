@@ -1,0 +1,41 @@
+<h1>Show Better word</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.better_word_show_path(@socket, :show, @better_word)}>
+    <.live_component
+      module={BetterWordsWeb.BetterWordLive.FormComponent}
+      id={@better_word.id}
+      title={@page_title}
+      action={@live_action}
+      better_word={@better_word}
+      return_to={Routes.better_word_show_path(@socket, :show, @better_word)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Label:</strong>
+    <%= @better_word.label %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @better_word.user_id %>
+  </li>
+
+  <li>
+    <strong>Reason:</strong>
+    <%= @better_word.reason %>
+  </li>
+
+  <li>
+    <strong>Worst word:</strong>
+    <%= @better_word.worst_word_id %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.better_word_show_path(@socket, :edit, @better_word), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.better_word_index_path(@socket, :index) %></span>

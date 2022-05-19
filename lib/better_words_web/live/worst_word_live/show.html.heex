@@ -32,5 +32,8 @@
 
 </ul>
 
+
+<span><%= live_patch "Add", to: Routes.better_word_index_path(@socket, :new), class: "button" %></span> |
+
 <span><%= live_patch "Edit", to: Routes.worst_word_show_path(@socket, :edit, @worst_word), class: "button" %></span> |
 <span><%= live_redirect "Back", to: Routes.worst_word_index_path(@socket, :index) %></span>

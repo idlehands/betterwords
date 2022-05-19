@@ -1,0 +1,45 @@
+<h1>Listing Better words</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.better_word_index_path(@socket, :index)}>
+    <.live_component
+      module={BetterWordsWeb.BetterWordLive.FormComponent}
+      id={@better_word.id || :new}
+      title={@page_title}
+      action={@live_action}
+      better_word={@better_word}
+      return_to={Routes.better_word_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>User</th>
+      <th>Reason</th>
+      <th>Worst word</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="better_words">
+    <%= for better_word <- @better_words do %>
+      <tr id={"better_word-#{better_word.id}"}>
+        <td><%= better_word.label %></td>
+        <td><%= better_word.user_id %></td>
+        <td><%= better_word.reason %></td>
+        <td><%= better_word.worst_word_id %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.better_word_show_path(@socket, :show, better_word) %></span>
+          <span><%= live_patch "Edit", to: Routes.better_word_index_path(@socket, :edit, better_word) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: better_word.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Better word", to: Routes.better_word_index_path(@socket, :new) %></span>
