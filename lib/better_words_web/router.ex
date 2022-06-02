@@ -27,7 +27,7 @@ defmodule BetterWordsWeb.Router do
     live "/worst_words/:id/show/edit", WorstWordLive.Show, :edit
 
     live "/better_words", BetterWordLive.Index, :index
-    live "/better_words/new", BetterWordLive.Index, :new
+    live "/worst_words/:id/better_words/new", WorstWordLive.Show, :new_better_word
     live "/better_words/:id/edit", BetterWordLive.Index, :edit
 
     live "/better_words/:id", BetterWordLive.Show, :show

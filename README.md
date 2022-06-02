@@ -17,3 +17,11 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+## Next Time
+  * Remove worst word id from the Add New Better Word form
+  * Implement authentication and link this to the Add New Better Word form field `user`
+  * Ensure saving and validation works for the Add Better Word form
+
+  * Repeat for Edit Better Word live action

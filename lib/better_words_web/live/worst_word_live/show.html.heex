@@ -13,6 +13,19 @@
   </.modal>
 <% end %>
 
+<%= if @live_action in [:new_better_word] do %>
+  <.modal return_to={Routes.worst_word_index_path(@socket, :index)}>
+    <.live_component
+      module={BetterWordsWeb.BetterWordLive.FormComponent}
+      id={@better_word.id || :new}
+      title={@page_title}
+      action={@live_action}
+      better_word={@better_word}
+      return_to={Routes.worst_word_show_path(@socket, :show, @worst_word)}
+    />
+  </.modal>
+<% end %>
+
 <ul>
 
   <li>
@@ -33,7 +46,7 @@
 </ul>
 
 
-<span><%= live_patch "Add", to: Routes.better_word_index_path(@socket, :new), class: "button" %></span> |
+<span><%= live_patch "Add", to: Routes.worst_word_show_path(@socket, :new_better_word, @worst_word), class: "button" %></span> |
 
 <span><%= live_patch "Edit", to: Routes.worst_word_show_path(@socket, :edit, @worst_word), class: "button" %></span> |
 <span><%= live_redirect "Back", to: Routes.worst_word_index_path(@socket, :index) %></span>
